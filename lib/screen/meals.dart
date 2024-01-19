@@ -10,7 +10,13 @@ class MealsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Widget content = ListView.builder(
-      itemBuilder: (ctx, index) => Text(meals[index].title),
+      itemCount: meals.length,
+      itemBuilder: (ctx, index) => Text(
+        meals[index].title,
+        style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+              color: Theme.of(context).colorScheme.onBackground,
+            ),
+      ),
     );
 
     if (meals.isEmpty) {
@@ -18,7 +24,12 @@ class MealsScreen extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Text("There is nothing here!"),
+            Text(
+              "There is nothing here!",
+              style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                    color: Theme.of(context).colorScheme.onBackground,
+                  ),
+            ),
             const SizedBox(
               height: 16,
             ),
